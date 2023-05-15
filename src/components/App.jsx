@@ -1,0 +1,80 @@
+import React, { Component } from "react";
+import  Searchbar  from "./Searchbar/Searchbar";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { Loader } from "./Loader/Loader";
+import { ButtonLoadMore } from "./Button/Button";
+import { ModalWindow } from "./Modal/Modal";
+import { getDataByName } from "./services/api";
+
+
+export class App extends Component {
+  state = {
+    pictures: [],
+    input: '',
+    page: 1,
+    isLoading: false,
+    error: '',
+    modalImg: '',
+  };
+
+  componentDidUpdate(_, prevState,) {
+    const getApiByName = async (input, page) => {
+      try {
+        this.setState({ isLoading: true });
+        const data = await getDataByName(input, page);
+        this.setState({ isLoading: false });
+        const arr = data.hits;
+        this.state.pictures.push(...arr);
+      } catch (err) {
+        this.setState({ 
+          error: err.message,
+        });
+      } finally {
+        this.setState({ isLoading: false })
+      }
+    }
+    if (prevState.input !== this.state.input) return getApiByName(this.state.input, this.state.page);
+    if (prevState.page !==this.state.page) return getApiByName(this.state.input, this.state.page);
+    else return;
+  };
+
+  onFind = (search) => {
+    this.setState({ input: search, pictures: [], page: 1 });
+  };
+
+  onClick = () => {
+    this.setState({ page: this.state.page + 1});
+  };
+
+  onModalOpen = url => {
+    this.setState({ modalImg: url });
+  };
+
+  onModalClose = () => {
+    this.setState({ modalImg: '' });
+  };
+
+  render () {
+    let isLoading = this.state.isLoading;
+    return (
+      <div>
+        <Searchbar
+        onFind={this.onFind} />
+        <ImageGallery
+        data={this.state.pictures}
+        onClick={this.onModalOpen}
+        />
+        {isLoading && <Loader/>}
+        {this.state.modalImg && (
+          <ModalWindow
+          closeModal={this.onModalClose}
+          url={this.state.modalImg}/>
+        )}
+        <ButtonLoadMore
+        onClick={this.onClick}
+        isLoading={isLoading}
+        pictures={this.state.pictures}/>
+      </div>
+    )
+  }
+}
