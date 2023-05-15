@@ -5,6 +5,7 @@ import { Loader } from "./Loader/Loader";
 import { ButtonLoadMore } from "./Button/Button";
 import { ModalWindow } from "./Modal/Modal";
 import { getDataByName } from "./services/api";
+import { Container } from "./Container/Container";
 
 
 export class App extends Component {
@@ -60,6 +61,7 @@ export class App extends Component {
       <div>
         <Searchbar
         onFind={this.onFind} />
+        <Container>
         <ImageGallery
         data={this.state.pictures}
         onClick={this.onModalOpen}
@@ -74,6 +76,7 @@ export class App extends Component {
         onClick={this.onClick}
         isLoading={isLoading}
         pictures={this.state.pictures}/>
+        </Container>
       </div>
     )
   }

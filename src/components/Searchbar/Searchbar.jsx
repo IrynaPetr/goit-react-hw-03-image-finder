@@ -1,4 +1,4 @@
-import { HeaderSearchBar, FormSearchBar, BtnSearch,BtnLabel, Input } from "./Searchbar.styled";
+import { HeaderSearchBar, FormSearchBar, BtnSearch, BtnLabel, Input } from "./Searchbar.styled";
 import React, { Component } from "react";
 
 export default class Searchbar extends Component {
