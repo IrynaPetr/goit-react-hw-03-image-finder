@@ -1,5 +1,6 @@
 import { HeaderSearchBar, FormSearchBar, BtnSearch, BtnLabel, Input } from "./Searchbar.styled";
 import React, { Component } from "react";
+import searchIcon from '../../search_icon/searh_icon.png'
 
 export default class Searchbar extends Component {
   state = {
@@ -24,7 +25,8 @@ export default class Searchbar extends Component {
     return (
       <HeaderSearchBar>
         <FormSearchBar onSubmit={this.onSubmit}>
-          <BtnSearch type="submit">
+          <BtnSearch type="submit"
+          style={{ backgroundImage: `url(${searchIcon})` }}>
             <BtnLabel>Search</BtnLabel>
           </BtnSearch>
           <Input

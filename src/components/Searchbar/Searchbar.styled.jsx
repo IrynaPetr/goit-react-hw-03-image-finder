@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const HeaderSearchBar = styled.header`
 top: 0;
   left: 0;
@@ -35,7 +36,7 @@ display: inline-block;
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('./src/search_icon/searh_icon.png');
+
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
