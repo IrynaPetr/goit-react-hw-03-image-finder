@@ -10,6 +10,9 @@ export const ButtonLoadMore = ({ onClick, isLoading, pictures }) => {
 
 ButtonLoadMore.propTypes = {
   onClick: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  pictures: PropTypes.array.isRequired,
+  
 }
 
 export default ButtonLoadMore;
