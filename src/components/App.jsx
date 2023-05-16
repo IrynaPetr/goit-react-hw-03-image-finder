@@ -63,7 +63,7 @@ export class App extends Component {
 
   render () {
     let isLoading = this.state.isLoading;
-    let hasMorePictures = this.state.hasMorePictures;
+  
     return (
       <div>
         <Searchbar
