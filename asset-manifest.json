@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/goit-react-hw-03-image-finder/static/css/main.7c9e5569.css",
-    "main.js": "/goit-react-hw-03-image-finder/static/js/main.385cd67a.js",
+    "main.js": "/goit-react-hw-03-image-finder/static/js/main.c42789c9.js",
     "static/media/searh_icon.png": "/goit-react-hw-03-image-finder/static/media/searh_icon.3817fa1088aa84dbb497.png",
     "index.html": "/goit-react-hw-03-image-finder/index.html",
     "main.7c9e5569.css.map": "/goit-react-hw-03-image-finder/static/css/main.7c9e5569.css.map",
-    "main.385cd67a.js.map": "/goit-react-hw-03-image-finder/static/js/main.385cd67a.js.map"
+    "main.c42789c9.js.map": "/goit-react-hw-03-image-finder/static/js/main.c42789c9.js.map"
   },
   "entrypoints": [
     "static/css/main.7c9e5569.css",
-    "static/js/main.385cd67a.js"
+    "static/js/main.c42789c9.js"
   ]
 }
