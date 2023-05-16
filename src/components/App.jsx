@@ -16,7 +16,7 @@ export class App extends Component {
     isLoading: false,
     error: '',
     modalImg: '',
-    hasMorePictures: true,
+    totalHits: null,
   };
 
   componentDidUpdate(_, prevState,) {
@@ -26,12 +26,12 @@ export class App extends Component {
         const data = await getDataByName(input, page);
         this.setState({ isLoading: false });
         const arr = data.hits;
-        this.state.pictures.push(...arr);
-        if (arr.length < data.totalHits) {
-          this.setState({ hasMorePictures: true });
-        } else {
-          this.setState({ hasMorePictures: false });
-        }
+        const totalHits = data.totalHits;
+        this.setState(prevState => ({
+          pictures: [...prevState.pictures, ...arr],
+          totalHits: totalHits,
+        }));
+       
       } catch (err) {
         this.setState({ 
           error: err.message,
@@ -79,7 +79,7 @@ export class App extends Component {
           closeModal={this.onModalClose}
           url={this.state.modalImg}/>
         )}
-        {hasMorePictures && (<ButtonLoadMore
+        {this.state.totalHits / 12 > this.state.page && (<ButtonLoadMore
         onClick={this.onClick}
         isLoading={isLoading}
         pictures={this.state.pictures}
